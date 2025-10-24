@@ -1,59 +1,72 @@
-function toggleMenu{
-    const menu = document.getElementById("navMenu");
-    mwnu.classList.toggle('active');
+function toggleMenu() {
+    const navMenu = document.getElementById("navMenu");
+    navMenu.classList.toggle('active');
 }
 
-function scrollactive(sectionId){
-    const section = document.getElementById(sectionId)
+function scrollActive(sectionId) {
+    const section = document.getElementById(sectionId);
+    if (!section) return;
 
-
-
-    if(!section) return
     const headerHeight = 70;
     const sectionPosition = section.offsetTop - headerHeight;
 
-     windows.crollTo({top: sectionPosition, behavior: "smooth"});
-     const menu = document.getElementById("navMenu");
-     menu.classList.remove('active');
-   
-     
+    window.scrollTo({ top: sectionPosition, behavior: "smooth" });
+
+    const menu = document.getElementById("navMenu");
+    menu.classList.remove('active');
 }
 
-function handleSubmit(event){
+function handleSubmit(event) {
     event.preventDefault();
-    
-    const form = document.getElementById('volunteerFotm');
 
-    const fotmdata ={
-        nome: form.email.value,
-        email: form.email.valume,
-        telefone: form.telefone.value
-        idade: form.idade.value
-        disponibilidade : form.disponibilidade.value,
-        areainterrese: form.areainteresse.value,
-        motivacao: new Date().toLocaleDateString()
-        dataCadastro: new Data().toLocaleDateString()
-    }
+    const form = document.getElementById('volunteerForm');
 
-     let voluntarios = JSON.parse(localStorage.getItem('voluntarios') || []);
-     voluntarios.push(formData);
-     localStorage.setItem('voluntarios', JSON.stringify(voluntarios));
+    const formData = {
+        nome: form.nome.value,
+        email: form.email.value,
+        telefone: form.telefone.value,
+        idade: form.idade.value,
+        disponibilidade: form.disponibilidade.value,
+        areaInteresse: form.areaInteresse.value,
+        motivacao: form.motivacao.value,
+        dataCadastro: new Date().toLocaleDateString()
+    };
 
-     const sucessMessage = document.getElementById('successMessage");
-    sucessMessage.classList.add('show');
-    sucessMessage.scrollIntoView({behavior: 'smooth", block:'center'});
-     
-    setTimeout(() => form.reset(),2000);  
-    setTimeout(() => sucessMessage.classList.remove('show"), 3000);
-        
-    exibirVolutarios();
-    }
+    let voluntarios = JSON.parse(localStorage.getItem('voluntarios') || '[]');
+    voluntarios.push(formData);
+    localStorage.setItem('voluntarios', JSON.stringify(voluntarios));
 
-function exibirVolutarios(){
+    const successMessage = document.getElementById('successMessage');
+    successMessage.classList.add('show');
+    successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+    setTimeout(() => form.reset(), 2000);
+    setTimeout(() => successMessage.classList.remove('show'), 3000);
+
+    exibirVoluntarios();
+}
+
+function exibirVoluntarios() {
     const voluntarios = JSON.parse(localStorage.getItem('voluntarios') || '[]');
     const voluntariosList = document.getElementById('tabelaVoluntarios');
-    
-    if(!voluntariosList) return;
 
-    if(voluntarios.length === 0){
-        tabelaCounter.innerHTML = '<p>Nenhum voluntário cadastrado ainda.</p>';
+    if (!voluntariosList) return;
+
+    if (voluntarios.length === 0) {
+        voluntariosList.innerHTML = '<p>Nenhum voluntário cadastrado ainda.</p>';
+        return;
+    }
+
+    voluntariosList.innerHTML = voluntarios.map(v => `
+        <div class="voluntario">
+            <p><strong>Nome:</strong> ${v.nome}</p>
+            <p><strong>Email:</strong> ${v.email}</p>
+            <p><strong>Telefone:</strong> ${v.telefone}</p>
+            <p><strong>Idade:</strong> ${v.idade}</p>
+            <p><strong>Disponibilidade:</strong> ${v.disponibilidade}</p>
+            <p><strong>Área de Interesse:</strong> ${v.areaInteresse}</p>
+            <p><strong>Motivação:</strong> ${v.motivacao}</p>
+            <p><strong>Data de Cadastro:</strong> ${v.dataCadastro}</p>
+        </div>
+    `).join('');
+}
