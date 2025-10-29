@@ -8,7 +8,7 @@
 
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, cursive, Verdana, sans-serif;
     line-height: 1.6;
     color: #333;
 }
@@ -18,7 +18,7 @@ body {
    Header e Navegação
    ========================== */
 header {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #31025d 0%, #764ba2 100%);
     color: white;
     padding: 1rem 0;
     position: fixed;
@@ -76,7 +76,7 @@ nav a {
    Hero Section - Index
    ========================== */
 .hero {
-    background: linear-gradient(rgba(102, 126, 234, 0.8), rgba(118, 75, 162, 0.8)),
+    background: linear-gradient(#2a193a, #8156ac),
                 url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23f0f0f0" width="1200" height="600"/></svg>');
     background-size: cover;
     background-position: center;
@@ -242,5 +242,115 @@ footer {
     margin-top: 3rem;
 }
 
+/* === AJUSTE GERAL === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    width: 100%;
+    overflow-x: hidden; /* 🔧 Impede rolagem lateral */
+}
+
+/* === NAVBAR === */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(90deg, #31025d, #764ba2);
+    padding: 10px 20px;
+    color: white;
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+nav ul li a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+    color: #ffd700;
+}
+
+/* === MENU MOBILE === */
+.menu-toggle {
+    display: none;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+}
+
+/* === HERO SECTION === */
+.hero {
+    text-align: center;
+    color: white;
+    background: linear-gradient(180deg, #2a193a, #8156ac);
+    padding: 80px 20px;
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hero h1 {
+    font-size: 4.5rem;
+    margin-bottom: 20px;
+    line-height: 2.3;
+}
+
+.hero p {
+    font-size: 1.1rem;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* === RESPONSIVIDADE (Mobile até 768px) === */
+@media (max-width: 768px) {
+    nav ul {
+        display: none; /* Esconde o menu padrão */
+        flex-direction: column;
+        background: #4b0082;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        padding: 15px 0;
+        text-align: center;
+    }
+
+    nav ul.active {
+        display: flex; /* Mostra quando clicar no botão ☰ */
+    }
+
+    .menu-toggle {
+        display: block; /* Mostra o botão ☰ */
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+        padding: 0 10px;
+    }
+}
 
 

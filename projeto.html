@@ -7,10 +7,135 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projetos de Voluntariado</title>
+
+    <!-- ✅ CSS embutido corretamente -->
+    <style>
+        /* === SEÇÃO SOBRE === */
+        .about {
+            background-color: #f9f9ff;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .about h2 {
+            color: #4b0082;
+            margin-bottom: 15px;
+            font-size: 2rem;
+        }
+
+        .about p {
+            max-width: 800px;
+            margin: 0 auto 40px;
+            font-size: 1.1rem;
+            color: #333;
+        }
+
+        /* === CARDS DE IMPACTO === */
+        .impact-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+            padding: 0 20px;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 15px;
+            padding: 25px 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            text-align: left;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+        }
+
+        .card-icon {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .card h3 {
+            color: #4b0082;
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        .card p {
+            color: #555;
+            line-height: 1.5;
+        }
+
+        /* === SEÇÃO CTA === */
+        .cta {
+            background: linear-gradient(135deg, #6a0dad, #8a2be2);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            border-radius: 15px;
+            margin: 50px auto;
+            max-width: 900px;
+        }
+
+        .cta h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .cta p {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .btn-primary, .btn-secondary {
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn-primary {
+            background-color: #fff;
+            color: #6a0dad;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            border: 2px solid #fff;
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background-color: #eee;
+            transform: scale(1.05);
+        }
+
+        .btn-secondary:hover {
+            background-color: #fff;
+            color: #6a0dad;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body>
     <!-- Header -->
     <header>
         <nav>
-            <div class="logo">💙 Voluntários</div>
+            <div class="logo">&#127757; Transformar+</div>
             <button class="menu-toggle" onclick="toggleMenu()">☰</button>
             <ul id="navMenu">
                 <li><a href="index.html">Início</a></li>
@@ -86,4 +211,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-
