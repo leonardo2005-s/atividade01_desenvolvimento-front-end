@@ -1,4 +1,6 @@
-// Alterna o menu de navegação (abrir/fechar)
+// ============================
+// Menu Mobile - Alterna o menu
+// ============================
 function toggleMenu() {
     const navMenu = document.getElementById("navMenu");
     if (navMenu) {
@@ -6,7 +8,9 @@ function toggleMenu() {
     }
 }
 
-// Faz o scroll suave até a seção selecionada
+// ============================
+// Scroll suave até a seção
+// ============================
 function scrollActive(sectionId) {
     const section = document.getElementById(sectionId);
     if (!section) return;
@@ -18,12 +22,12 @@ function scrollActive(sectionId) {
 
     // Fecha o menu após clicar em um link
     const menu = document.getElementById("navMenu");
-    if (menu) {
-        menu.classList.remove("active");
-    }
+    if (menu) menu.classList.remove("active");
 }
 
-// Envia o formulário e salva os dados no Local Storage
+// ============================
+// Formulário de Voluntários
+// ============================
 function handleSubmit(event) {
     event.preventDefault();
 
@@ -60,7 +64,6 @@ function handleSubmit(event) {
     exibirVoluntarios();
 }
 
-// Exibe os voluntários cadastrados
 function exibirVoluntarios() {
     const voluntarios = JSON.parse(localStorage.getItem("voluntarios") || "[]");
     const voluntariosList = document.getElementById("tabelaVoluntarios");
@@ -73,8 +76,7 @@ function exibirVoluntarios() {
     }
 
     voluntariosList.innerHTML = voluntarios
-        .map(
-            (v) => `
+        .map(v => `
             <div class="voluntario">
                 <p><strong>Nome:</strong> ${v.nome}</p>
                 <p><strong>Email:</strong> ${v.email}</p>
@@ -85,7 +87,32 @@ function exibirVoluntarios() {
                 <p><strong>Motivação:</strong> ${v.motivacao}</p>
                 <p><strong>Data de Cadastro:</strong> ${v.dataCadastro}</p>
             </div>
-            `
-        )
+        `)
         .join("");
 }
+
+// ============================
+// Slideshow automático (8 imagens)
+// ============================
+let slideIndex = 0;
+function showSlides() {
+    const slides = document.getElementsByClassName("slide");
+    if (slides.length === 0) return;
+
+    for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+
+    slideIndex++;
+    if (slideIndex > slides.length) slideIndex = 1;
+
+    slides[slideIndex - 1].style.display = "block";
+
+    setTimeout(showSlides, 3000); // muda a cada 3 segundos
+}
+
+// Inicializa funções
+document.addEventListener("DOMContentLoaded", () => {
+    showSlides();
+    exibirVoluntarios();
+});

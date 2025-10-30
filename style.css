@@ -1,18 +1,19 @@
-
-
+/* ==========================
+   Reset e Configuração Geral
+   ========================== */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-
-body {
+body, html {
+    width: 100%;
+    overflow-x: hidden;
     font-family: 'Segoe UI', Tahoma, cursive, Verdana, sans-serif;
     line-height: 1.6;
     color: #333;
 }
-
 
 /* ==========================
    Header e Navegação
@@ -24,10 +25,9 @@ header {
     position: fixed;
     width: 100%;
     top: 0;
-    z-index: 1000;
+    z-index: 1000; /* corrigido */
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
-
 
 nav {
     max-width: 1200px;
@@ -38,12 +38,10 @@ nav {
     padding: 0 2rem;
 }
 
-
 .logo {
     font-size: 1.5rem;
     font-weight: bold;
 }
-
 
 nav ul {
     display: flex;
@@ -51,94 +49,83 @@ nav ul {
     gap: 2rem;
 }
 
-
 nav a {
     color: white;
     text-decoration: none;
-    transition: opacity 0.3s;
     font-weight: 500;
+    opacity: 0.8;
+    transition: opacity 0.3s, color 0.3s;
 }
-
 
 nav a:hover,
 nav a.active {
     opacity: 1;
-    font-weight: bold;
+    color: #ffd700;
 }
 
-
-nav a {
-    opacity: 0.8;
+/* === MENU MOBILE === */
+.menu-toggle {
+    display: none;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
 }
-
 
 /* ==========================
-   Hero Section - Index
+   Hero Section - Página Inicial
    ========================== */
 .hero {
-    background: linear-gradient(#2a193a, #8156ac),
-                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23f0f0f0" width="1200" height="600"/></svg>');
-    background-size: cover;
-    background-position: center;
-    height: 100vh;
+    color: white;
+    min-height: 90vh;
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
     text-align: center;
-    color: white;
+    padding: 100px 20px 60px;
     margin-top: 70px;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(180deg, #2a193a, #8156ac);
 }
 
-
-.hero-page {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    padding: 8rem 2rem 4rem;
-    text-align: center;
-    color: white;
-    margin-top: 70px;
+.hero-content {
+    position: relative;
+    z-index: 2;
 }
 
-
-.hero-content, .signup-section {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 2rem;
-    animation: fadeInUp 1s ease-out;
+.hero h1 {
+    font-size: 3rem;
+    line-height: 1.2;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.4);
 }
 
-
-.hero h1,
-.hero-page h1 {
-    font-size: 3.5rem;
-    margin-bottom: 1rem;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+.hero p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto 20px;
+    line-height: 1.5;
 }
 
-
-.hero p,
-.hero-page p {
-    font-size: 1.3rem;
-    margin-bottom: 2rem;
-}
-
-
-
+/* Botões CTA */
 .cta-buttons {
     display: flex;
-    flex-direction: row; /* lado a lado */
-    gap: 1.5rem; /* espaço entre os botões */
-    justify-content: center; /* centraliza horizontalmente */
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: center;
     align-items: center;
-    flex-wrap: wrap; /* quebra em telas pequenas */
-    margin-top: 2rem;
+    flex-wrap: wrap;
+    margin-top: 20px;
 }
 
-
 .btn-primary, .btn-secondary {
-    flex: 1 1 200px; /* largura mínima 200px, cresce se houver espaço */
-    max-width: 250px; /* não fique muito largo */
+    flex: 1 1 200px;
+    max-width: 250px;
     padding: 1rem 2.5rem;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: bold;
     border-radius: 50px;
     border: none;
@@ -150,24 +137,20 @@ nav a {
     text-align: center;
 }
 
-
 .btn-primary {
     background: #4c62c4;
     color: white;
 }
-
 
 .btn-secondary {
     background: #5f2c92;
     color: white;
 }
 
-
 .btn-primary:hover, .btn-secondary:hover {
     transform: translateY(-3px) scale(1.05);
     box-shadow: 0 10px 25px rgba(0,0,0,0.3);
 }
-
 
 .btn-primary::after, .btn-secondary::after {
     content: '';
@@ -181,14 +164,14 @@ nav a {
     transition: all 0.5s ease;
 }
 
-
 .btn-primary:hover::after, .btn-secondary:hover::after {
     top: -20%;
     left: -20%;
 }
 
-
-
+/* ==========================
+   Formulários
+   ========================== */
 form fieldset {
     border: 1px solid #ccc;
     border-radius: 8px;
@@ -196,24 +179,20 @@ form fieldset {
     margin-bottom: 1.5rem;
 }
 
-
 form legend {
     font-weight: bold;
     padding: 0 0.5rem;
 }
 
-
 .form-group {
     margin-bottom: 1rem;
 }
-
 
 .form-group label {
     display: block;
     margin-bottom: 0.5rem;
     font-weight: 500;
 }
-
 
 .form-group input,
 .form-group select,
@@ -225,7 +204,6 @@ form legend {
     font-size: 1rem;
 }
 
-
 .success-message {
     display: none; 
     margin-bottom: 1rem;
@@ -234,7 +212,9 @@ form legend {
     text-align: center;
 }
 
-
+/* ==========================
+   Rodapé
+   ========================== */
 footer {
     text-align: center;
     padding: 2rem;
@@ -242,89 +222,12 @@ footer {
     margin-top: 3rem;
 }
 
-/* === AJUSTE GERAL === */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body, html {
-    width: 100%;
-    overflow-x: hidden; /* 🔧 Impede rolagem lateral */
-}
-
-/* === NAVBAR === */
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: linear-gradient(90deg, #31025d, #764ba2);
-    padding: 10px 20px;
-    color: white;
-}
-
-.logo {
-    font-weight: bold;
-    font-size: 1.2rem;
-}
-
-nav ul {
-    display: flex;
-    list-style: none;
-    gap: 20px;
-}
-
-nav ul li a {
-    color: rgb(255, 255, 255);
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s ease;
-}
-
-nav ul li a:hover,
-nav ul li a.active {
-    color: #ffd700;
-}
-
-/* === MENU MOBILE === */
-.menu-toggle {
-    display: none;
-    font-size: 1.5rem;
-    background: none;
-    border: none;
-    color: rgb(255, 255, 255);
-    cursor: pointer;
-}
-
-/* === HERO SECTION === */
-.hero {
-    text-align: center;
-    color: white;
-    background: linear-gradient(180deg, #2a193a, #8156ac);
-    padding: 80px 20px;
-    min-height: 90vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.hero h1 {
-    font-size: 4.5rem;
-    margin-bottom: 20px;
-    line-height: 2.3;
-}
-
-.hero p {
-    font-size: 1.1rem;
-    max-width: 500px;
-    margin: 0 auto;
-}
-
-/* === RESPONSIVIDADE (Mobile até 768px) === */
+/* ==========================
+   Responsividade
+   ========================== */
 @media (max-width: 768px) {
     nav ul {
-        display: none; /* Esconde o menu padrão */
+        display: none;
         flex-direction: column;
         background: #4b0082;
         position: absolute;
@@ -336,11 +239,11 @@ nav ul li a.active {
     }
 
     nav ul.active {
-        display: flex; /* Mostra quando clicar no botão ☰ */
+        display: flex;
     }
 
     .menu-toggle {
-        display: block; /* Mostra o botão ☰ */
+        display: block;
     }
 
     .hero h1 {
@@ -352,5 +255,3 @@ nav ul li a.active {
         padding: 0 10px;
     }
 }
-
-
